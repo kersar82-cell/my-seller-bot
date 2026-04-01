@@ -125,3 +125,12 @@ def add_money(message):
         bot.send_message(target_user, f"🎉 আপনার একাউন্টে {amount} টাকা ডিপোজিট সফল হয়েছে!")
     except:
         bot.reply_to(message, "❌ ফরম্যাট ভুল! লিখুন: `/add 123456 50`")
+
+# --- মেইন রান লজিক ---
+if __name__ == "__main__":
+    # ১. আলাদা থ্রেডে ফ্ল্যাক্স সার্ভার চালু করা (যাতে রেন্ডার পোর্ট খুঁজে পায়)
+    threading.Thread(target=run_flask).start()
+    
+    # ২. আপনার টেলিগ্রাম বট চালু করা
+    print("Bot is starting...")
+    bot.infinity_polling()
